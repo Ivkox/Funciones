@@ -7,15 +7,18 @@
 </head>
 <body>
     <script>
-          function contar(){
+          function contar(maximo){
             let i = 1
 
-            for(;i<10; i++){
+            for(;i<=maximo; i++){
                 document.write(i);
             }
+            document.write('<br>')
         }
 
-        contar()
+        contar(5)
+        contar(10)
+        contar(6)
     </script>
 </body>
 </html>
