@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+           function contar(contador){
+
+for(;contador<10; contador++){
+    document.write(contador);
+}
+}
+
+let i = 1;
+
+document.write("i vale: "+i+ "<br>")
+
+//El valor de i se copia en el parámetro local contador de la función.
+contar(i)
+i = 4
+contar(i)
+//i sigue valiendo 1, a pesar de que contador la hemos incrementado hasta 10.
+document.write("i, después de contar, vale: "+i+ "<br>")
+    </script>
+</body>
+</html>
