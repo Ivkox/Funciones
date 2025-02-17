@@ -8,9 +8,20 @@
 <body>
     <script>
        function mostrar(num,limit,valor){
-        for(num; num>LIMIT_PAR; num - VALOR_PAR);
+        while (num > LIMIT_PAR) {
+        num - VALOR_PAR;
+        document.write (num);
+        }
        }
-        
+
+       function mostrarImpar(num,limit,valor){
+       while (num > LIMIT_IMPAR) {
+        num - VALOR_IMPAR;
+        document.write (num);
+        }
+
+       }
+
         const MSG_ENTRADA = "Introduce un número";
         const MSG_NUM = "El usuario introduce el número";
         const VALOR_PAR = 2;
@@ -20,9 +31,11 @@
         let num = prompt(MSG_ENTRADA);
         
         if (num%2==0) {
-            document.write(mostrar(num,LIMIT_PAR,VALOR_PAR));
+            mostrar("num","LIMIT_PAR","VALOR_PAR");
+        }else{
+            mostrarImpar("num","LIMIT_IMPAR","VALOR_IMPAR");
         }
-        
+
     </script>
 </body>
 </html>
