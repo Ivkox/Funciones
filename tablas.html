@@ -7,7 +7,16 @@
 </head>
 <body>
     <script>
-       function mostrar(num,limit,valor){
+        const MSG_ENTRADA = "Introduce un número";
+        const MSG_NUM = "El usuario introduce el número";
+        const VALOR_PAR = 2;
+        const LIMIT_PAR = 0;
+        const VALOR_IMPAR = 1;
+        const LIMIT_IMPAR = 1;
+        let num = prompt(MSG_ENTRADA);
+        
+        
+        function mostrar(num,limit,valor){
         while (num > LIMIT_PAR) {
         num - VALOR_PAR;
         document.write (num);
@@ -22,13 +31,7 @@
 
        }
 
-        const MSG_ENTRADA = "Introduce un número";
-        const MSG_NUM = "El usuario introduce el número";
-        const VALOR_PAR = 2;
-        const LIMIT_PAR = 0;
-        const VALOR_IMPAR = 1;
-        const LIMIT_IMPAR = 1;
-        let num = prompt(MSG_ENTRADA);
+       
         
         if (num%2==0) {
             mostrar("num","LIMIT_PAR","VALOR_PAR");
