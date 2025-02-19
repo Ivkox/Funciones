@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function nombrar(nombre, apellidos, edad){
+            const MAYOR = 18;
+            
+            if (edad >= MAYOR){
+                document.write (`${nombre}, ${apellidos}, ${edad}, es mayor de edad` + "<br>");
+            }else{
+                document.write (`${nombre}, ${apellidos}, ${edad}, es menor de edad` + "<br>");
+            }
+        }
+        
+
+        nombrar ("Ivan","Ramirez",12);
+        nombrar ("Juan","Jose",20);
+        nombrar ("Pepito","Grillo",18);
+
+    </script>
+</body>
+</html>
