@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function acertar(password){
+            document.write (`<h1>${MSG_ACIERTO}</h1>`);
+        }
+
+        function fallar(password){
+            while (contador < 3){
+                password = prompt (MSG_ERROR)
+                contador++;
+                if (password == acierto){
+                    contador = 3;
+                    document.write (`<h1>${MSG_ACIERTO}</h1>`)
+                }else if (password != acierto && contador == 3){
+                    document.write (`<h1>${MSG_NO_ACCESO}</h1>`)
+                }
+            }
+        }
+
+        const MSG_PREGUNTA = "Escribe una contraseña";
+        const MSG_ACIERTO = "Bienvenide";
+        const MSG_ERROR = "Intento fallido, intentalo otra vez";
+        const MSG_NO_ACCESO = "Acceso denegado";
+        const MSG_PASSWORD = "Di la verdadera contraseña";
+
+        let acierto = prompt (MSG_PASSWORD);
+        let password = prompt (MSG_PREGUNTA);
+        let contador = 0;
+
+        if (password == acierto){
+            acertar (password)
+        }else if(password != acierto){
+            fallar (password)
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
