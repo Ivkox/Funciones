@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // Funciones
+
+        function mostrar(msg,nivel){
+            document.write("<br>" + `<h${nivel}>`+ `${msg}` +`</h${nivel}` + "<br>")
+        }
+
+        function esPasswordCorrecto(password) {
+            if (pass == PASS_1_OK || pass == PASS_2_OK ||
+                pass == PASS_3_OK || pass == PASS_4_OK
+            ) {
+                accesoCorrecto = true;
+                mostrar(MSG_OK,1);
+            } else {
+                accesoCorrecto = false;
+                mostrar(MSG_KO,1);
+                while (intento < 3) {
+                    prompt(MSG_INTRODUCIR);
+                    intento++;
+                }
+            }
+        }
+
+        // Programa Principal 
+
+        const MSG_INTRODUCIR = "Introduce un password"
+        const TITULO = "Sistema"
+        const MSG_OK = "Bienvenide"
+        const MSG_KO = "No puedes entrar"
+        const PASS_1_OK = "OK"
+        const PASS_2_OK = "OK2"
+        const PASS_3_OK = "hola"
+        const PASS_4_OK = "adios"
+
+        const MAX_INTENTOS = 3
+
+
+        let accesoCorrecto = false
+        let intento = 0
+        let pass = prompt(MSG_INTRODUCIR)
+
+
+        mostrar(TITULO,2);
+        esPasswordCorrecto(pass);
+
+
+    </script>
+</body>
+
+</html>
