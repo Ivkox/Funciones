@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
 
         // Funciones
 
-        function esPasswordCorrecto (password){
-            if(pass == PASS_1_OK || pass == PASS_2_OK || 
-                pass == PASS_3_OK || pass == PASS_4_OK 
-            ){
+        function esPasswordCorrecto(password) {
+            if (pass == PASS_1_OK || pass == PASS_2_OK ||
+                pass == PASS_3_OK || pass == PASS_4_OK
+            ) {
                 accesoCorrecto = true;
-                document.write (MSG_OK);
-            }else{
+                document.write(MSG_OK);
+            } else {
                 accesoCorrecto = false;
-                document.write (MSG_KO);
-                while (intento < 3){
-                    prompt (MSG_INTRODUCIR);
+                document.write(MSG_KO);
+                while (intento < 3) {
+                    prompt(MSG_INTRODUCIR);
                     intento++;
                 }
             }
@@ -28,7 +30,7 @@
 
         // Programa Principal 
 
-        const MSG_INTRODUCIR  ="Introduce un password"
+        const MSG_INTRODUCIR = "Introduce un password"
         const TITULO = "Sistema"
         const MSG_OK = "Bienvenide"
         const MSG_KO = "No puedes entrar"
@@ -45,10 +47,11 @@
         let pass = prompt(MSG_INTRODUCIR)
 
 
-        document.write("<h1><strong>"+TITULO+"</strong></h1>")
-        esPasswordCorrecto (pass);
+        document.write("<h1><strong>" + TITULO + "</strong></h1>")
+        esPasswordCorrecto(pass);
 
 
     </script>
 </body>
+
 </html>

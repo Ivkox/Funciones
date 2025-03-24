@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>While</title>
 </head>
 <body>
-    <script>
-            function contar2(){
-            document.write("voy a pintar")
+  <script>
+    const NUM_TOTAL = 50
+    const MSG = "2 elevado a"
+    const BASE = 2
+    
+    let contador = 0
+    let potencia = 0;
 
-            for(;j<10; j++){
-                document.write(j);
-            }
-        }
 
-        let j = 1
-        contar2()
-        document.write("En el programa principal j vale: "+j);
-        contar2()
-    </script>
+    while (contador < NUM_TOTAL) { 
+      document.write(`${MSG} ${contador} es igual a ${BASE ** contador} <br>`)
+      contador++
+    }
+
+
+  </script>
 </body>
 </html>
