@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+
+    <script>
+
+        let canvas = document.getElementById("myCanvas");
+
+        //Obtenemos el contexto: 2d, podría ser 3d
+        let ctx = canvas.getContext("2d");
+
+        //pintamos una linea horizontal(x,y)
+        ctx.moveTo(0, 150);
+        ctx.lineTo(200, 150);
+        ctx.stroke();
+
+        //pintamos una linea vertical (x,y)
+        ctx.moveTo(100, 90);
+        ctx.lineTo(100, 250);
+        ctx.stroke();
+
+        //pintamos una linea oblicua
+        ctx.moveTo(100, 250);
+        ctx.lineTo(150, 350);
+        ctx.stroke();
+
+        //pintamos un círculo (x, y, x2, y2, radio (2 pi))
+        ctx.beginPath();
+        ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        //pintamos un texto
+        ctx.font = "30px Arial";
+        ctx.fillText("Juego del", 50, 370);
+
+        //pintamos un texto con formato
+        ctx.font = "30px Arial";
+        ctx.strokeText("Ahorcado", 40, 400);
+
+
+    </script>
+
+</body>
+
+</html>
