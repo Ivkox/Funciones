@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Nómina</title>
+
+    <!-- Este código es para que salga más bonito NO TOCAR
+        Pone un color de fondo en todo lo que esté en body
+        y para los encabezados deja espacio a la izquierda para que salgan 
+        tabulados.
+     -->
+    <style>
+        body {
+            background-color: lightblue;
+        }
+
+        h1 {
+            color: navy;
+            text-align: center;
+        }
+
+        p {
+            margin-left: 20px;
+        }
+
+        h2 {
+            margin-left: 20px;
+        }
+
+        h3 {
+            margin-left: 40px;
+        }
+
+        h4 {
+            margin-left: 70px;
+        }
+
+        h5 {
+            margin-left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Calculadora de Nómina</h1>
+
+    <p>Por favor introduzca los siguientes datos y pulse calcular</p>
+
+
+    <!--
+        Fíjate que el nombre es un texto (type=text) y los datos numéricos son de tipo "number"
+    -->
+    <p><strong>Nombre: </strong> <input type="text" id="nombre" size="20"> </p>
+
+    <p><strong>Salario Base: </strong> <input type="number" id="salario_base" size="4"> </p>
+    <p><strong>Plus Convenio: </strong> <input type="number" id="plus_convenio" size="4"> </p>
+    <p><strong>Antigüedad: </strong> <input type="number" id="antiguedad" size="4"> </p>
+    <p><strong>Plus Vestuario: </strong> <input type="number" id="vestuario" size="4"> </p>
+    <p><strong>Horas Extra Normales: </strong><br>
+        Horas: <input type="number" id="horas_extra_num" size="4"><br>
+        Precio: <input type="number" id="horas_extra_precio" size="4">
+    </p>
+    <p><strong>Horas Extra de Fuerza Mayor:</strong><br>
+        Horas: <input type="number" id="horas_extraf_num" size="4"><br>
+        Precio: <input type="number" id="horas_extraf_precio" size="4">
+    </p>
+    <p><strong>Kilometraje:</strong><br>
+        Kilometros: <input type="number" id="kilometro_num" size="4"><br>
+        Precio por km: <input type="number" id="kilometro_precio" size="4">
+    </p>
+    <p><strong>Dietas:</strong><br>
+        Dietas: <input type="number" id="dieta_num" size="4"><br>
+        Precio por dietas: <input type="number" id="dieta_precio" size="4">
+    </p>
+    <p><strong>Plus Transporte:</strong> <input type="number" id="transporte" size="4"> </p>
+    <p><strong>Pagas Extra:</strong><br>
+        Pagas: <input type="number" id="paga_num" size="4"><br>
+        Precio por pagas: <input type="number" id="paga_precio" size="4">
+    </p>
+    <p><strong>% IRPF: </strong> <input type="number" id="irpf" size="4"> </p>
+
+    <!-- TODO: Falta el resto de campos-->
+
+    <p><button onclick="calcular()">Calcular</button></p>
+    <hr>
+
+    <h2>I. DEVENGOS <input type="number" id="total_devengos" size="4"></h2>
+    <h3>1. PERCEPCIONES SALARIALES <input type="number" id="total_salariales" size="4"></h3>
+    <h4>SALARIO BASE <input type="number" id="dev_salario_base" size="4"></h4>
+
+    <h4>COMPLEM. SALARIALES</h4>
+    <h5>Plus convenio <input type="number" id="dev_plus_convenio" size="4"></h4>
+        <h5>Antigüedad <input type="number" id="dev_antiguedad" size="4"></h4>
+            <h4>HORAS EXTRAORDINARIAS NORMALES <input type="number" id="dev_horas_extra_n" size="4"></h4>
+            <h4>HORAS EXTRAORDINARIAS FUERZA MAYOR <input type="number" id="dev_horas_extra_f" size="4"></h4>
+            <h3>2. PERCEPCIONES NO SALARIALES <input type="number" id="total_no_salariales" size="4"></h3>
+            <!-- TODO: Falta el resto de campos-->
+
+            <h5>Plus vestuario: <input type="number" id="dev_plus_vestuario"></h5>
+            <h5>Kilometraje: <input type="number" id="dev_kilometros"></h5>
+            <h5>Dietas: <input type="number" id="dev_dieta"></h5>
+            <h5>Plus transporte: <input type="number" id="dev_plus_transporte"></h5>
+
+
+            <h2>II. DEDUCCIONES <input type="number" id="total_deducciones" size="4"></h2>
+            <h3>1. APORTACIONES DEL TRABAJADOR A LA SEGURIDAD SOCIAL <input type="number" id="total_ss" size="4"></h3>
+            <!-- TODO: Falta el resto de campos-->
+            <h4>Prorrata Pagas Extra: <input type="number" id="pro_pagas" size="4"></h4>
+            <h4>BCCC: <input type="number" id="b_ccc" size="4"></h4>
+            <h4>BCCP: <input type="number" id="b_ccp" size="4"></h4>
+            <h4>BCHE normales: <input type="number" id="b_che_n" size="4"></h4>
+            <h4>BCHE fuerza mayor: <input type="number" id="b_che_fm" size="4"></h4>
+            <hr>
+
+            <h5>Contingencias comunes (BCCC x 4,82%): <input type="number" id="c_comunes" size="4"></h5>
+            <h5>Desempleo (BCCP x 1,55%): <input type="number" id="desempleo" size="4"></h5>
+            <h5>Formación Profesional (BCCP x 0,1%): <input type="number" id="f_pro" size="4"></h5>
+            <h5>Horas extra normales (BCHE normales x 4,7%): <input type="number" id="ded_horas_extra_n" size="4"></h5>
+            <h5>Horas extra fuerza mayor (BCHE fuerza mayor x 2%): <input type="number" id="ded_horas_extra_fm"
+                    size="4"></h5>
+
+
+            <h3>2. IRPF <input type="number" id="total_irpf" size="4"></h3>
+            <!-- TODO: Falta el resto de campos-->
+
+            <h2 id="resultado"></h2>
+
+            <script>
+
+
+
+
+
+                //Función que se llama desde el la página html.
+                function calcular() {
+
+                    //Se llama a las funciones que hacen cada cosa (se resuelve poco a poco y siguiendo un orden)
+
+                    calcularDevengos()
+                    calcularTotalDevengos()
+
+
+                    calcularDeducciones()
+                    
+
+                    //TODO agrega la llamada a las funciones que necesites
+                    
+
+                }
+
+                function calcularDevengos() {
+                    calcularPercepcionesSalariales()
+                    calcularPercepcionesNoSalariales()
+
+                }
+
+                //variables de CalcularPercepcionesSalariales
+                //Datos del formulario
+                let salario = document.getElementById("salario_base")
+                let convenio = document.getElementById("plus_convenio")
+                let antiguedad = document.getElementById("antiguedad")
+                let horasNormalesNum = document.getElementById("horas_extra_num")
+                let horasFuerzaNum = document.getElementById("horas_extraf_num")
+                let horasNormalesPrecio = document.getElementById("horas_extra_precio")
+                let horasFuerzaPrecio = document.getElementById("horas_extraf_precio")
+                let totalHorasNormales
+                totalHorasNormales = horasNormalesNum.value * horasNormalesPrecio.value
+                let totalHorasFuerza
+                totalHorasFuerza = horasFuerzaNum.value * horasFuerzaPrecio.value
+
+
+                //Variables de destino
+                let devSalario = document.getElementById("dev_salario_base")
+                let devConvenio = document.getElementById("dev_plus_convenio")
+                let devAntiguedad = document.getElementById("dev_antiguedad")
+                let devHorasNormales = document.getElementById("dev_horas_extra_n")
+                let devHorasFuerza = document.getElementById("dev_horas_extra_f")
+                let totalSalariales = document.getElementById("total_salariales")
+
+                function calcularPercepcionesSalariales() {
+
+                    //Se asigna el salario introducido por el usuario, al devengo salario base.
+                    devSalario.value = salario.value
+                    devConvenio.value = convenio.value
+                    devAntiguedad.value = antiguedad.value
+                    devHorasNormales.value = parseInt(totalHorasNormales)
+                    devHorasFuerza.value = parseInt(totalHorasFuerza)
+                    totalSalariales = parseInt(devSalario.value) + parseInt(devConvenio.value) + parseInt(devAntiguedad.value) + parseInt(devHorasNormales.value) + parseInt(devHorasFuerza.value)
+
+                }
+
+                //variables de calcularPercepcionesNoSalariales
+                let vestuario = document.getElementById("vestuario")
+                let kmNum = document.getElementById("kilometro_num")
+                let kmPrecio = document.getElementById("kilometro_precio")
+                let dietaNum = document.getElementById("dieta_num")
+                let dietaPrecio = document.getElementById("dieta_precio")
+                let transporte = document.getElementById("transporte")
+                let kilometraje = kmNum.value * kmPrecio.value
+                let dieta = dietaNum.value * dietaPrecio.value
+
+
+                let devVestuario = document.getElementById("dev_plus_vestuario")
+                let devKilometraje = document.getElementById("dev_kilometros")
+                let devDieta = document.getElementById("dev_dieta")
+                let devTransporte = document.getElementById("dev_plus_transporte")
+                let totalNoSalariales = document.getElementById("total_no_salariales")
+
+                function calcularPercepcionesNoSalariales() {
+
+                    devVestuario.value = vestuario.value
+                    devKilometraje.value = kilometraje.value
+                    devDieta.value = dieta.value
+                    devTransporte.value = transporte.value
+                    totalNoSalariales = parseInt(devVestuario.value) + parseInt(devKilometraje.value) + parseInt(devDieta.value) + parseInt(devTransporte.value)
+
+                }
+
+                function calcularTotalDevengos() {
+                    let totalDevengos = document.getElementById("total_devengos")
+                    totalDevengos.value = parseInt(totalSalariales.value) + parseInt(totalNoSalariales.value)
+
+                }
+
+
+
+
+
+
+
+                function calcularDeducciones() {
+                    calcularSeguridadSocial()
+                    
+
+                }
+
+                function calcularSeguridadSocial() {
+
+                    let pagasNum = document.getElementById("paga_num")
+                    let pagasPrecio = document.getElementById("paga_precio")
+
+                    let proPagas = document.getElementById("pro_pagas")
+                    proPagas.value = (pagasNum.value * pagasPrecio.value) / 12
+                    let bccc = document.getElementById("b_ccc")
+                    bccc.value = parseInt(proPagas.value) + parseInt(devSalario.value) + parseInt(devConvenio.value) + parseInt(devAntiguedad.value) + parseInt(devVestuario.value) + parseInt(devTransporte.value)
+                    let bccp = document.getElementById("b_ccp")
+                    bccp.value = parseInt(bccc.value) + parseInt(devHorasNormales.value) + parseInt(devHorasFuerza.value)
+                    let bcheNormales = document.getElementById("b_che_n")
+                    bcheNormales.value = devHorasNormales.value
+                    let bcheFuerzaMayor = document.getElementById("b_che_fm")
+                    bcheFuerzaMayor.value = devHorasFuerza.value
+
+                    let conComunes = document.getElementById("c_comunes")
+                    conComunes.value = bccc.value * 0.0482
+                    let desempleo = document.getElementById("desempleo")
+                    desempleo.value = bccp.value * 0.0155
+                    let fProfesional = document.getElementById("f_pro")
+                    fProfesional.value = bccp.value * 0.01
+                    let horasExtra = document.getElementById("ded_horas_extra_n")
+                    horasExtra.value = bcheNormales.value * 0.047
+                    let horasExtraFuerza = document.getElementById("ded_horas_extra_fm")
+                    horasExtraFuerza.value = bcheFuerzaMayor.value * 0.02
+                    let totalSeguridad
+                    totalSeguridad = parseInt(conComunes.value) + parseInt(desempleo.value) + parseInt(fProfesional.value) + parseInt(horasExtra.value) + parseInt(horasExtraFuerza.value)
+
+
+                    function calcularIRPF() {
+
+                        let totalDevengos = document.getElementById("total_devengos")
+                        totalDevengos = parseInt(totalSalariales.value) + parseInt(totalNoSalariales.value)
+                        let baseIRPF
+                        baseIRPF = parseInt(totalDevengos.value) - parseInt(devDieta.value) - parseInt(devKilometraje.value)
+                        let porcentajeIRPF = document.getElementById("irpf")
+                        let totalIRPF = document.getElementById("total_irpf")
+                        totalIRPF.value = (baseIRPF.value * porcentajeIRPF.value) / 100
+
+                        function calcularTotalDeducciones() {
+
+                            let deduccionesTotal = document.getElementById("total_deducciones".value)
+
+                            deduccionesTotal.value = parseInt(totalSeguridad) + parseInt(totalIRPF)
+                        }
+
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+                function mostrarResultado() {
+
+                    const MSG = "<strong>LÍQUIDO A PERCIBIR (importe neto):  </strong>"
+
+                    let nombre = document.getElementById("nombre")
+                    let devengos = document.getElementById("total_devengos")
+                    let deducciones = document.getElementById("total_deducciones")
+
+                    let resultado = document.getElementById("resultado")
+
+                    let total = parseInt(devengos.value) - parseInt(deducciones.value)
+
+                    resultado.innerHTML = MSG + total + " <h1>Invítate a algo " + nombre.value + "</h1>"
+
+                }
+
+                //TODO implementa todas las funciones que necesites.
+
+            </script>
+
+</body>
+
+</html>

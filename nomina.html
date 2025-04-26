@@ -128,181 +128,181 @@
             <h2 id="resultado"></h2>
 
             <script>
-
-
-
-
-
-                //Función que se llama desde el la página html.
                 function calcular() {
-
-                    //Se llama a las funciones que hacen cada cosa (se resuelve poco a poco y siguiendo un orden)
-
-                    calcularDevengos()
-                    calcularTotalDevengos()
-
-
-                    calcularDeducciones()
-                    calcularTotalDeducciones()
-
-                    //TODO agrega la llamada a las funciones que necesites
-                    mostrarResultado()
-
+                    calcularDevengos();
+                    calcularTotalDevengos();
+                    calcularDeducciones();
+                    calcularTotalDeducciones();
+                    mostrarResultado();
                 }
 
                 function calcularDevengos() {
-                    calcularPercepcionesSalariales()
-                    calcularPercepcionesNoSalariales()
-
+                    calcularPercepcionesSalariales();
+                    calcularPercepcionesNoSalariales();
                 }
 
-                //variables de CalcularPercepcionesSalariales
-                //Datos del formulario
-                let salario = document.getElementById("salario_base")
-                let convenio = document.getElementById("plus_convenio")
-                let antiguedad = document.getElementById("antiguedad")
-                let horasNormalesNum = document.getElementById("horas_extra_num")
-                let horasFuerzaNum = document.getElementById("horas_extraf_num")
-                let horasNormalesPrecio = document.getElementById("horas_extra_precio")
-                let horasFuerzaPrecio = document.getElementById("horas_extraf_precio")
-                let totalHorasNormales = horasNormalesNum.value * horasNormalesPrecio.value
-                let totalHorasFuerza = horasFuerzaNum.value * horasFuerzaPrecio.value
-
-
-                //Variables de destino
-                let devSalario = document.getElementById("dev_salario_base")
-                let devConvenio = document.getElementById("dev_plus_convenio")
-                let devAntiguedad = document.getElementById("dev_antiguedad")
-                let devHorasNormales = document.getElementById("dev_horas_extra_n")
-                let devHorasFuerza = document.getElementById("dev_horas_extra_f")
-                let totalSalariales = document.getElementById("total_salariales")
+                // Variables de CalcularPercepcionesSalariales
+                let salario = document.getElementById("salario_base");
+                let convenio = document.getElementById("plus_convenio");
+                let antiguedad = document.getElementById("antiguedad");
+                let horasNormalesNum = document.getElementById("horas_extra_num");
+                let horasFuerzaNum = document.getElementById("horas_extraf_num");
+                let horasNormalesPrecio = document.getElementById("horas_extra_precio");
+                let horasFuerzaPrecio = document.getElementById("horas_extraf_precio");
 
                 function calcularPercepcionesSalariales() {
+                    let totalHorasNormales = (parseInt(horasNormalesNum.value) || 0) * (parseInt(horasNormalesPrecio.value) || 0);
+                    let totalHorasFuerza = (parseInt(horasFuerzaNum.value) || 0) * (parseInt(horasFuerzaPrecio.value) || 0);
 
-                    //Se asigna el salario introducido por el usuario, al devengo salario base.
-                    devSalario.value = salario.value
-                    devConvenio.value = convenio.value
-                    devAntiguedad.value = antiguedad.value
-                    devHorasNormales.value = totalHorasNormales
-                    devHorasFuerza.value = totalHorasFuerza
-                    totalSalariales.value = parseInt(devSalario.value) + parseInt(devConvenio.value) + parseInt(devAntiguedad.value) + parseInt(devHorasNormales.value) + parseInt(devHorasFuerza.value)
+                    let devSalario = document.getElementById("dev_salario_base");
+                    let devConvenio = document.getElementById("dev_plus_convenio");
+                    let devAntiguedad = document.getElementById("dev_antiguedad");
+                    let devHorasNormales = document.getElementById("dev_horas_extra_n");
+                    let devHorasFuerza = document.getElementById("dev_horas_extra_f");
+                    let totalSalariales = document.getElementById("total_salariales");
 
+                    devSalario.value = parseInt(salario.value) || 0;
+                    devConvenio.value = parseInt(convenio.value) || 0;
+                    devAntiguedad.value = parseInt(antiguedad.value) || 0;
+                    devHorasNormales.value = totalHorasNormales;
+                    devHorasFuerza.value = totalHorasFuerza;
+
+                    totalSalariales.value =
+                        parseInt(devSalario.value) +
+                        parseInt(devConvenio.value) +
+                        parseInt(devAntiguedad.value) +
+                        parseInt(devHorasNormales.value) +
+                        parseInt(devHorasFuerza.value);
                 }
 
-                //variables de calcularPercepcionesNoSalariales
-                let vestuario = document.getElementById("vestuario")
-                let kmNum = document.getElementById("kilometro_num")
-                let kmPrecio = document.getElementById("kilometro_precio")
-                let dietaNum = document.getElementById("dieta_num")
-                let dietaPrecio = document.getElementById("dieta_precio")
-                let transporte = document.getElementById("transporte")
-                let kilometraje = kmNum.value * kmPrecio.value
-                let dieta = dietaNum.value * dietaPrecio.value
-
-
-                let devVestuario = document.getElementById("dev_plus_vestuario")
-                let devKilometraje = document.getElementById("dev_kilometros")
-                let devDieta = document.getElementById("dev_dieta")
-                let devTransporte = document.getElementById("dev_plus_transporte")
-                let totalNoSalariales = document.getElementById("total_no_salariales")
+                // Variables de calcularPercepcionesNoSalariales
+                let vestuario = document.getElementById("vestuario");
+                let kmNum = document.getElementById("kilometro_num");
+                let kmPrecio = document.getElementById("kilometro_precio");
+                let dietaNum = document.getElementById("dieta_num");
+                let dietaPrecio = document.getElementById("dieta_precio");
+                let transporte = document.getElementById("transporte");
 
                 function calcularPercepcionesNoSalariales() {
+                    // Cálculo de kilometraje y dieta
+                    let kilometraje = (parseInt(kmNum.value) || 0) * (parseInt(kmPrecio.value) || 0);
+                    let dieta = (parseInt(dietaNum.value) || 0) * (parseInt(dietaPrecio.value) || 0);
 
-                    devVestuario.value = vestuario.value
-                    devKilometraje.value = kilometraje
-                    devDieta.value = dieta
-                    devTransporte.value = transporte.value
-                    totalNoSalariales.value = parseInt(devVestuario.value) + parseInt(devKilometraje.value) + parseInt(devDieta.value) + parseInt(devTransporte.value)
+                    // Elementos del DOM
+                    let devVestuario = document.getElementById("dev_plus_vestuario");
+                    let devKilometraje = document.getElementById("dev_kilometros");
+                    let devDieta = document.getElementById("dev_dieta");
+                    let devTransporte = document.getElementById("dev_plus_transporte");
+                    let totalNoSalariales = document.getElementById("total_no_salariales");
 
+                    // Asignación de valores a los campos
+                    devVestuario.value = parseInt(vestuario.value) || 0;
+                    devKilometraje.value = kilometraje;
+                    devDieta.value = dieta;
+                    devTransporte.value = parseInt(transporte.value) || 0;
+
+                    // Suma de percepciones no salariales
+                    totalNoSalariales.value =
+                        (parseInt(devVestuario.value) || 0) +
+                        (parseInt(devKilometraje.value) || 0) +
+                        (parseInt(devDieta.value) || 0) +
+                        (parseInt(devTransporte.value) || 0);
                 }
 
                 function calcularTotalDevengos() {
-                    let totalDevengos = document.getElementById("total_devengos")
-                    totalDevengos.value = parseInt(totalSalariales.value) + parseInt(totalNoSalariales.value)
+                    let totalSalariales = document.getElementById("total_salariales");
+                    let totalNoSalariales = document.getElementById("total_no_salariales");
+                    let totalDevengos = document.getElementById("total_devengos");
 
+                    totalDevengos.value =
+                        (parseInt(totalSalariales.value) || 0) +
+                        (parseInt(totalNoSalariales.value) || 0);
                 }
 
-
-
-
-
-
-
                 function calcularDeducciones() {
-                    calcularSeguridadSocial()
-                    calcularIRPF()
-
+                    calcularSeguridadSocial();
+                    calcularIRPF();
                 }
 
                 function calcularSeguridadSocial() {
+                    let pagasNum = parseInt(document.getElementById("paga_num").value) || 0;
+                    let pagasPrecio = parseInt(document.getElementById("paga_precio").value) || 0;
 
-                    let pagasNum = document.getElementById("paga_num")
-                    let pagasPrecio = document.getElementById("paga_precio")
+                    let proPagas = document.getElementById("pro_pagas");
+                    proPagas.value = (pagasNum * pagasPrecio) / 12;
 
-                    let proPagas = document.getElementById("pro_pagas")
-                    proPagas.value = (pagasNum.value * pagasPrecio.value) / 12
-                    let bccc = document.getElementById("b_ccc")
-                    bccc.value = parseInt(proPagas.value) + parseInt(devSalario.value) + parseInt(devConvenio.value) + parseInt(devAntiguedad.value) + parseInt(devVestuario.value) + parseInt(devTransporte.value)
-                    let bccp = document.getElementById("b_ccp")
-                    bccp.value = parseInt(bccc.value) + parseInt(devHorasNormales.value) + parseInt(devHorasFuerza.value)
-                    let bcheNormales = document.getElementById("b_che_n")
-                    bcheNormales.value = devHorasNormales.value
-                    let bcheFuerzaMayor = document.getElementById("b_che_fm")
-                    bcheFuerzaMayor.value = devHorasFuerza.value
+                    let bccc = document.getElementById("b_ccc");
+                    let bccp = document.getElementById("b_ccp");
+                    let bcheNormales = document.getElementById("b_che_n");
+                    let bcheFuerzaMayor = document.getElementById("b_che_fm");
 
-                    let conComunes = document.getElementById("c_comunes")
-                    conComunes = bccc.value * 0.0482
-                    let desempleo = document.getElementById("desempleo")
-                    desempleo = bccp.value * 0.0155
-                    let fProfesional = document.getElementById("f_pro")
-                    fProfesional = bccp.value * 0.01
-                    let horasExtra = document.getElementById("ded_horas_extra_n")
-                    horasExtra = bcheNormales.value * 0.047
-                    let horasExtraFuerza = document.getElementById("ded_horas_extra_fm")
-                    horasExtraFuerza = bcheFuerzaMayor.value * 0.02  
-                    let                     
+                    let proPagasValue = parseFloat(proPagas.value) || 0;
 
-                
+                    bccc.value = proPagasValue;
+                    bccp.value = proPagasValue;
+                    bcheNormales.value = proPagasValue;
+                    bcheFuerzaMayor.value = proPagasValue;
+
+                    let conComunes = document.getElementById("c_comunes");
+                    let desempleo = document.getElementById("desempleo");
+                    let fProfesional = document.getElementById("f_pro");
+                    let horasExtra = document.getElementById("ded_horas_extra_n");
+                    let horasExtraFuerza = document.getElementById("ded_horas_extra_fm");
+
+                    conComunes.value = (parseFloat(bccc.value) || 0) * 0.0482;
+                    desempleo.value = (parseFloat(bccp.value) || 0) * 0.0155;
+                    fProfesional.value = (parseFloat(bccp.value) || 0) * 0.001;
+                    horasExtra.value = (parseFloat(bcheNormales.value) || 0) * 0.047;
+                    horasExtraFuerza.value = (parseFloat(bcheFuerzaMayor.value) || 0) * 0.02;
+
+                    let totalSeguridad = document.getElementById("total_ss");
+                    totalSeguridad.value =
+                        (parseFloat(conComunes.value) || 0) +
+                        (parseFloat(desempleo.value) || 0) +
+                        (parseFloat(fProfesional.value) || 0) +
+                        (parseFloat(horasExtra.value) || 0) +
+                        (parseFloat(horasExtraFuerza.value) || 0);
+                }
 
                 function calcularIRPF() {
-                    
-                    let totalDevengos = document.getElementById("total_devengos")
-                    totalDevengos.value = parseInt(totalSalariales.value) + parseInt(totalNoSalariales.value)
-                    let baseIRPF
-                    baseIRPF.value = parseInt(totalDevengos.value) - parseInt(devDieta.value) - parseInt(devKilometraje.value)
-                    let porcentajeIRPF = document.getElementById("irpf")
-                    let totalIRPF = document.getElementById("total_irpf")
-                    totalIRPF.value = baseIRPF.value * porcentajeIRPF.value
-                
+                    let totalDevengos = document.getElementById("total_devengos");
+                    let devDieta = document.getElementById("dev_dieta");
+                    let devKilometraje = document.getElementById("dev_kilometros");
+                    let porcentajeIRPF = document.getElementById("irpf");
+                    let totalIRPF = document.getElementById("total_irpf");
+
+                    let baseIRPF =
+                        (parseInt(totalDevengos.value) || 0) -
+                        (parseInt(devDieta.value) || 0) -
+                        (parseInt(devKilometraje.value) || 0);
+
+                    totalIRPF.value = (baseIRPF * (parseInt(porcentajeIRPF.value) || 0)) / 100;
+                }
 
                 function calcularTotalDeducciones() {
+                    let totalSeguridad = document.getElementById("total_ss");
+                    let totalIRPF = document.getElementById("total_irpf");
+                    let deduccionesTotal = document.getElementById("total_deducciones");
 
-                    let deducciones = document.getElementById("total_deducciones")
-
-                    deducciones.value = 
+                    deduccionesTotal.value =
+                        (parseInt(totalSeguridad.value) || 0) +
+                        (parseInt(totalIRPF.value) || 0);
                 }
-
-            }
-        }
 
                 function mostrarResultado() {
+                    const MSG = "<strong>LÍQUIDO A PERCIBIR (importe neto):  </strong>";
 
-                    const MSG = "<strong>LÍQUIDO A PERCIBIR (importe neto):  </strong>"
+                    let nombre = document.getElementById("nombre");
+                    let devengos = document.getElementById("total_devengos");
+                    let deducciones = document.getElementById("total_deducciones");
 
-                    let nombre = document.getElementById("nombre")
-                    let devengos = document.getElementById("total_devengos")
-                    let deducciones = document.getElementById("total_deducciones")
+                    let resultado = document.getElementById("resultado");
 
-                    let resultado = document.getElementById("resultado")
+                    let total =
+                        (parseInt(devengos.value) || 0) - (parseInt(deducciones.value) || 0);
 
-                    let total = parseInt(devengos.value) - parseInt(deducciones.value)
-
-                    resultado.innerHTML = MSG + total + " <h1>Invítate a algo " + nombre.value + "</h1>"
-
+                    resultado.innerHTML = MSG + total + " <h1>Invítate a algo " + nombre.value + "</h1>";
                 }
-
-                //TODO implementa todas las funciones que necesites.
-
             </script>
 
 </body>
