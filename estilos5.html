@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Juego de las letras</title>
+    </head>
+
+    <body>
+        <h1>Juego de las letras</h1>
+        <hr>
+        <p>Escribe una letra<input type="text" id="letra" name="letra" size="1"></p>
+        <p><button onclick="insertar()">Agregar</button> </p>
+        <p id="letra_introducida">Letras introducidas: </p>
+        <p id="resultado"></p>
+
+        <script type="text/javascript">
+            function insertar() {
+                let letra = document.getElementById("letra")
+                let letraIntro = document.getElementById("letra_introducida")
+
+                letraIntro.innerHTML = letraIntro.innerHTML + " <strong> " + letra.value + "</strong>"
+            }
+        </script>
+    </body>
+
+</html>

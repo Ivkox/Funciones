@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <!-- Empieza el formulario-->
+    <form method="get">
+        <!-- Caja de texto-->
+        <p>Nombre: <input type="text" name="nombre" size="40"></p>
+
+        <p>
+           Cuéntame algo: <textarea name="texto" rows="4" cols="20"></textarea>`  
+        </p>
+
+        <!-- Caja para un número-->
+        <p>Año de nacimiento: <input type="number" name="nacido"></p>
+
+        <!-- Radio button para seleccionar el sexo-->
+        <p>Sexo:
+          <input type="radio" name="vm" value="v"> Varón
+          <input type="radio" name="vm" value="m"> Mujer
+        </p>
+
+        <input type="checkbox" name="casilla" > Correcto? 
+
+        <!-- Listado -->
+         <p>Indica tu sistema operativo favorito
+        <select name="menu[]" size="5" multiple>
+            <option value="1">Debian</option>
+            <option value="2">Ubuntu</option>
+            <option value="3">Android</option>
+            <option value="4">Manjaro</option>
+            <option value="5">Arch</option>
+        </select>
+        </p>
+
+        <!-- Botones -->
+        <p>
+          <input type="submit" value="Enviar">
+          <input type="reset">
+        </p>
+      </form>
+
+</body>
+
+</html>
